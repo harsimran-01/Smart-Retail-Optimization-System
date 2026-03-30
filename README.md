@@ -9,6 +9,10 @@ An AI-powered retail analytics platform that helps businesses optimize inventory
 The **Smart Retail Optimization System** is designed to solve real-world retail challenges such as overstocking, understocking, and inefficient pricing strategies.
 By leveraging AI and data analytics, the system provides intelligent recommendations to maximize profitability and operational efficiency.
 
+## 🎥 Demo Video
+
+[🎬 Watch the Demo](https://drive.google.com/file/d/1ePYlU2S_w7-OuueqR8Cqwt_ujoV6awXR/view?usp=drive_link)
+
 ---
 
 ## ✨ Features
