@@ -1,6 +1,6 @@
 // Mock API service — set BASE_URL to your Express backend to connect
 // Example: const BASE_URL = "http://localhost:5000/api";
-const BASE_URL = "http://localhost:5000/api"; // Empty = use mock data below
+const BASE_URL = "https://smart-retail-optimization-system.onrender.com/api"; // Empty = use mock data below
 const USE_MOCK = !BASE_URL;
 // const USE_MOCK = false;
 const getToken = () => localStorage.getItem("token");
