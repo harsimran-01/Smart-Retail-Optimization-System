@@ -27,7 +27,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const mainNav = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard },
+  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
   { title: "Inventory", url: "/inventory", icon: Package },
   { title: "Sales", url: "/sales", icon: ShoppingCart },
 ];

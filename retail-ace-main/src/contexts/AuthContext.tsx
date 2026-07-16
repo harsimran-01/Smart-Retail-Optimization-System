@@ -22,39 +22,66 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
-  const [token, setToken] = useState<string | null>(localStorage.getItem("rp_token"));
+  const [token, setToken] = useState<string | null>(() => {
+    if (typeof window === "undefined") return null;
+    return window.localStorage.getItem("rp_token") || window.localStorage.getItem("token");
+  });
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (token) {
-      api.getMe(token)
+    const storedToken = typeof window !== "undefined"
+      ? window.localStorage.getItem("rp_token") || window.localStorage.getItem("token")
+      : null;
+
+    if (storedToken) {
+      setToken(storedToken);
+      api.getMe(storedToken)
         .then((u) => setUser(u))
         .catch(() => {
-          localStorage.removeItem("rp_token");
+          if (typeof window !== "undefined") {
+            window.localStorage.removeItem("rp_token");
+            window.localStorage.removeItem("token");
+            window.localStorage.removeItem("user");
+          }
           setToken(null);
+          setUser(null);
         })
         .finally(() => setIsLoading(false));
     } else {
+      setUser(null);
+      setToken(null);
       setIsLoading(false);
     }
-  }, [token]);
+  }, []);
 
   const login = async (email: string, password: string) => {
     const res = await api.login(email, password);
-    localStorage.setItem("rp_token", res.token);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("rp_token", res.token);
+      window.localStorage.setItem("token", res.token);
+    }
     setToken(res.token);
     setUser(res.user);
+    setIsLoading(false);
   };
 
   const register = async (name: string, email: string, password: string, role = "staff") => {
     const res = await api.register(name, email, password, role);
-    localStorage.setItem("rp_token", res.token);
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("rp_token", res.token);
+      window.localStorage.setItem("token", res.token);
+    }
     setToken(res.token);
     setUser(res.user);
+    setIsLoading(false);
   };
 
   const logout = () => {
-    localStorage.removeItem("rp_token");
+    if (typeof window !== "undefined") {
+      window.localStorage.removeItem("rp_token");
+      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("user");
+    }
     setToken(null);
     setUser(null);
   };
