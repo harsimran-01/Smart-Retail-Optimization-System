@@ -20,6 +20,7 @@ import BuyingPatterns from "@/pages/BuyingPatterns";
 import SeasonalTrends from "@/pages/SeasonalTrends";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import Index from "@/pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,10 +33,11 @@ const App = () => (
       <BrowserRouter>
         <AuthProvider>
           <Routes>
+            <Route path="/" element={<Index />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
-              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/inventory" element={<Inventory />} />
               <Route path="/sales" element={<Sales />} />
               <Route path="/analytics" element={<Analytics />} />

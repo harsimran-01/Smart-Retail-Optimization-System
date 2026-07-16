@@ -26,7 +26,7 @@ export default function Login() {
     try {
       await login(email, password);
       toast.success("Welcome back!");
-      navigate("/");
+      navigate("/dashboard");
     } catch (err: any) {
       toast.error(err.message || "Invalid credentials");
     } finally {

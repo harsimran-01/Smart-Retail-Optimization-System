@@ -33,7 +33,7 @@ export default function Signup() {
     try {
       await register(name, email, password, role);
       toast.success("Account created successfully!");
-      navigate("/");
+      navigate("/dashboard");
     } catch (err: any) {
       toast.error(err.message || "Registration failed");
     } finally {
