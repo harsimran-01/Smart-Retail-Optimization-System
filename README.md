@@ -33,9 +33,7 @@ The platform helps businesses reduce overstocking, avoid stockouts, understand s
 
 🚀 **Try RetailPulse Live**
 
-👉 [Open RetailPulse Dashboard](YOUR_VERCEL_DEPLOYMENT_LINK)
-
-> Replace `YOUR_VERCEL_DEPLOYMENT_LINK` with your actual Vercel deployment URL.
+👉 [Open RetailPulse Dashboard](https://retail-ace-main.vercel.app/)
 
 ---
 
@@ -173,11 +171,11 @@ npm start
 
 ---
 
-## 📸 Screenshots
+<!-- ## 📸 Screenshots
 
 > Add screenshots of your dashboard, analytics graphs, and UI here
 
----
+--- -->
 
 ## 🤝 Contributing
 
