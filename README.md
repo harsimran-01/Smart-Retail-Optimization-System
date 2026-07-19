@@ -6,11 +6,16 @@
   <b>📊 Intelligent Inventory • 📈 Sales Analytics • 🤖 AI-Powered Insights</b>
 </p>
 
-<p align="center">
-  <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
-    <img src="https://raw.githubusercontent.com/harsimran-01/Smart-Retail-Optimization-System/main/assets/live-demo.png" alt="Live Demo">
-  </a>
-</p>
+<table align="center">
+  <tr>
+    <td align="center">
+      <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
+        <h3>🌐 Live Demo</h3>
+        <p>Explore RetailPulse →</p>
+      </a>
+    </td>
+  </tr>
+</table>
 <p align="center">
   <a href="https://github.com/harsimran-01/Smart-Retail-Optimization-System">
     <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" />
