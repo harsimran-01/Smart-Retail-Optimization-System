@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0F766E&height=220&section=header&text=RetailPulse&fontSize=55&fontColor=ffffff&animation=fadeIn&desc=Smart%20Retail%20Optimization%20System&descAlignY=70&descSize=20" />
+  <img src="https://capsule-render.vercel.app/api?type=soft&color=0F766E&height=200&section=header&text=RetailPulse&fontSize=60&fontColor=ffffff&animation=fadeIn&desc=Smart%20Retail%20Optimization%20System&descAlignY=72&descSize=18" />
 </p>
 
 <p align="center">
