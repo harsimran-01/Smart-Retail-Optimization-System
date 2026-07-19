@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
-    <img src="https://img.shields.io/badge/DEMO-OPEN%20RETAILPULSE-0F766E?style=for-the-badge" alt="Open RetailPulse" />
+    <strong>🚀 &nbsp; OPEN RETAILPULSE &nbsp; 🚀</strong>
   </a>
 </p>
 <p align="center">
