@@ -10,8 +10,9 @@
   <tr>
     <td align="center">
       <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
-        <h3>🌐 Live Demo</h3>
-        <p>Explore RetailPulse →</p>
+        🌐<br>
+        <b>Live Demo</b><br>
+        <sub>Explore RetailPulse →</sub>
       </a>
     </td>
   </tr>
