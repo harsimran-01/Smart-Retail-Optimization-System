@@ -9,7 +9,7 @@
 <table align="center">
   <tr>
     <td align="center">
-      <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
+      <a href="YOUR_VERCEL_DEPLOYMENT_LINK" style="text-decoration: none; color: inherit;">
         🌐<br>
         <b>Live Demo</b><br>
         <sub>Explore RetailPulse →</sub>
