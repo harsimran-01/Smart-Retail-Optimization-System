@@ -8,8 +8,11 @@
 
 <p align="center">
   <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
-    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Visit%20Application-0e75b6?style=for-the-badge" />
+    <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Application-0F766E?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Demo" />
   </a>
+</p>
+
+<p align="center">
   <a href="https://github.com/harsimran-01/Smart-Retail-Optimization-System">
     <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" />
   </a>
