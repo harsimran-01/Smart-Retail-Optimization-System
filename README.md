@@ -1,47 +1,90 @@
-# 🛒 Smart Retail Optimization System
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0e75b6&height=220&section=header&text=RetailPulse&fontSize=55&fontColor=ffffff&animation=fadeIn&desc=Smart%20Retail%20Optimization%20System&descAlignY=70&descSize=20" />
+</p>
 
-An AI-powered retail analytics platform that helps businesses optimize inventory, detect demand patterns, and improve decision-making using data-driven insights.
+<p align="center">
+  <b>📊 Intelligent Inventory • 📈 Sales Analytics • 🤖 AI-Powered Insights</b>
+</p>
+
+<p align="center">
+  <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
+    <img src="https://img.shields.io/badge/🚀%20Live%20Demo-Visit%20Application-0e75b6?style=for-the-badge" />
+  </a>
+  <a href="https://github.com/harsimran-01/Smart-Retail-Optimization-System">
+    <img src="https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github" />
+  </a>
+</p>
 
 ---
 
-## 🚀 Overview
+# 🛒 RetailPulse
 
-The **Smart Retail Optimization System** is designed to solve real-world retail challenges such as overstocking, understocking, and inefficient pricing strategies.
-By leveraging AI and data analytics, the system provides intelligent recommendations to maximize profitability and operational efficiency.
+### Smart Retail Optimization System
+
+RetailPulse is an intelligent retail analytics platform designed to help businesses make better decisions through **real-time inventory monitoring, sales analytics, and data-driven insights**.
+
+The platform helps businesses reduce overstocking, avoid stockouts, understand sales trends, and improve overall operational efficiency.
+
+---
+
+## 🌐 Live Application
+
+🚀 **Try RetailPulse Live**
+
+👉 [Open RetailPulse Dashboard](YOUR_VERCEL_DEPLOYMENT_LINK)
+
+> Replace `YOUR_VERCEL_DEPLOYMENT_LINK` with your actual Vercel deployment URL.
+
+---
 
 ## 🎥 Demo Video
 
-[🎬 Watch the Demo](https://drive.google.com/file/d/1ePYlU2S_w7-OuueqR8Cqwt_ujoV6awXR/view?usp=drive_link)
+🎬 [Watch the Project Demo](https://drive.google.com/file/d/1ePYlU2S_w7-OuueqR8Cqwt_ujoV6awXR/view?usp=drive_link)
 
 ---
 
-## ✨ Features
+## ✨ Key Features
 
-* 📊 **Demand Prediction**
+### 📊 Interactive Analytics Dashboard
 
-  * Forecast product demand using historical sales data
+Get a complete overview of your retail business through:
 
-* 📦 **Inventory Optimization**
-
-  * Suggest optimal stock levels to reduce wastage and shortages
-
-* 💡 **Smart Recommendations**
-
-  * AI-driven suggestions for restocking and product prioritization
-
-* 📈 **Sales Analytics Dashboard**
-
-  * Visualize trends, top-performing products, and seasonal patterns
-
-* ⚡ **Real-Time Insights**
-
-  * Monitor ongoing performance and make quick decisions
-
-* 🔐 **Secure Data Handling**
-
-  * Environment-based configuration (API keys, DB URIs protected)
+- Total products
+- Total sales
+- Revenue tracking
+- Low-stock alerts
+- Top-performing products
+- Sales trends
 
 ---
+
+### 📦 Inventory Management
+
+Manage your complete product inventory from one place.
+
+✔ Add new products  
+✔ Update product information  
+✔ Delete products  
+✔ Track stock levels  
+✔ Monitor low-stock items  
+✔ Automatically update inventory after sales  
+
+---
+
+### 🛍️ Sales Management
+
+Record and manage sales transactions.
+
+When a sale is recorded:
+
+```text
+Sale Created
+     ↓
+Product Stock Updated
+     ↓
+Revenue Calculated
+     ↓
+Analytics Updated
 
 ## 🧠 Tech Stack
 
