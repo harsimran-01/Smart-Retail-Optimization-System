@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="YOUR_VERCEL_DEPLOYMENT_LINK">
-    <strong>🚀 &nbsp; OPEN RETAILPULSE &nbsp; 🚀</strong>
+    <img src="https://raw.githubusercontent.com/harsimran-01/Smart-Retail-Optimization-System/main/assets/live-demo.png" alt="Live Demo">
   </a>
 </p>
 <p align="center">
