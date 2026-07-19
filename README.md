@@ -5,8 +5,9 @@
 <p align="center">
   <b>📊 Intelligent Inventory • 📈 Sales Analytics • 🤖 AI-Powered Insights</b>
 </p>
+
 <p align="center">
-  <a href="YOUR_VERCEL_DEPLOYMENT_LINK" style="color: inherit; text-decoration: none;">
+  <a href="https://retail-ace-main.vercel.app/" style="color: #000000; text-decoration: none;">
     <strong>🌐 Open RetailPulse Live Demo →</strong>
   </a>
 </p>
