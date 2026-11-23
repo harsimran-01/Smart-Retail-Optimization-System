@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useMemo } from "react";
 import { api, type ForecastEntry } from "@/services/api";
 import {
@@ -30,30 +31,15 @@ const COLORS = [
 export default function Forecast() {
   const user = JSON.parse(localStorage.getItem("user") || "{}");
 
-  // ⭐ ROLE CHECK
-  if (user.role !== "admin") {
-    return (
-      <div className="flex items-center justify-center h-[60vh]">
-        <div className="text-center">
-          <h2 className="text-xl font-semibold">Admin Access Required</h2>
-          <p className="text-muted-foreground mt-2">
-            Demand forecasting is available only for administrators.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   const [forecasts, setForecasts] = useState<ForecastEntry[]>([]);
   const [selectedProduct, setSelectedProduct] = useState("all");
 
   useEffect(() => {
+    if (user.role !== "admin") return;
+
     const loadForecast = async () => {
       try {
-        // ✅ STEP 1 — generate fresh forecast in backend
         await api.generateForecast();
-
-        // ✅ STEP 2 — fetch generated forecasts
         const data = await api.getForecast();
         setForecasts(data);
       } catch (err) {
@@ -62,34 +48,50 @@ export default function Forecast() {
     };
 
     loadForecast();
-  }, []);
+  }, [user.role]);
 
   const productNames = useMemo(() => {
     const names = new Set(forecasts.map(f => f.productName));
     return Array.from(names);
   }, [forecasts]);
 
-  // Aggregated daily totals
   const dailyTotals = useMemo(() => {
     const byDate: Record<string, number> = {};
-    const data = selectedProduct === "all" ? forecasts : forecasts.filter(f => f.productName === selectedProduct);
+
+    const data =
+      selectedProduct === "all"
+        ? forecasts
+        : forecasts.filter(f => f.productName === selectedProduct);
+
     data.forEach(f => {
       byDate[f.date] = (byDate[f.date] || 0) + f.predictedDemand;
     });
+
     return Object.entries(byDate)
       .map(([date, demand]) => ({ date: date.slice(5), demand }))
       .sort((a, b) => a.date.localeCompare(b.date));
   }, [forecasts, selectedProduct]);
 
-  // Per-product summary (total predicted)
   const productSummary = useMemo(() => {
-    const byProduct: Record<string, { demand: number; avgConf: number; count: number }> = {};
+    const byProduct: Record<
+      string,
+      { demand: number; avgConf: number; count: number }
+    > = {};
+
     forecasts.forEach(f => {
-      if (!byProduct[f.productName]) byProduct[f.productName] = { demand: 0, avgConf: 0, count: 0 };
+      if (!byProduct[f.productName]) {
+        byProduct[f.productName] = {
+          demand: 0,
+          avgConf: 0,
+          count: 0,
+        };
+      }
+
       byProduct[f.productName].demand += f.predictedDemand;
       byProduct[f.productName].avgConf += +f.confidence;
       byProduct[f.productName].count += 1;
     });
+
     return Object.entries(byProduct)
       .map(([name, d]) => ({
         name: name.split(" ").slice(0, 2).join(" "),
@@ -100,12 +102,30 @@ export default function Forecast() {
       .sort((a, b) => b.demand - a.demand);
   }, [forecasts]);
 
+  // Role check AFTER all Hooks
+  if (user.role !== "admin") {
+    return (
+      <div className="flex items-center justify-center h-[60vh]">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold">
+            Admin Access Required
+          </h2>
+          <p className="text-muted-foreground mt-2">
+            Demand forecasting is available only for administrators.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-6 max-w-7xl">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-bold text-foreground">Demand Forecast</h1>
-          <p className="text-sm text-muted-foreground mt-1">7-day predicted demand based on sales history</p>
+          <p className="text-sm text-muted-foreground mt-1">
+            7-day predicted demand based on sales history
+          </p>
         </div>
         <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20">
           <Calendar className="w-3.5 h-3.5" />
@@ -113,7 +133,6 @@ export default function Forecast() {
         </div>
       </div>
 
-      {/* Filter */}
       <div className="max-w-xs">
         <Label className="text-xs text-muted-foreground">Filter by Product</Label>
         <Select value={selectedProduct} onValueChange={setSelectedProduct}>
@@ -130,7 +149,6 @@ export default function Forecast() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Demand Trend */}
         <div className="lg:col-span-2 glass-card-elevated p-5">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-4 h-4 text-primary" />
@@ -149,7 +167,6 @@ export default function Forecast() {
           </ResponsiveContainer>
         </div>
 
-        {/* Product Summary */}
         <div className="glass-card-elevated p-5">
           <h3 className="text-sm font-semibold text-foreground mb-4">7-Day Demand by Product</h3>
           <ResponsiveContainer width="100%" height={300}>
@@ -164,7 +181,6 @@ export default function Forecast() {
         </div>
       </div>
 
-      {/* Confidence Table */}
       <div className="glass-card-elevated p-5">
         <h3 className="text-sm font-semibold text-foreground mb-4">Forecast Confidence</h3>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">

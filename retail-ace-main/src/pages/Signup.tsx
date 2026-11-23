@@ -34,8 +34,10 @@ export default function Signup() {
       await register(name, email, password, role);
       toast.success("Account created successfully!");
       navigate("/dashboard");
-    } catch (err: any) {
-      toast.error(err.message || "Registration failed");
+    } catch (err: unknown) {
+      toast.error(
+        err instanceof Error ? err.message : "Registration failed"
+      );
     } finally {
       setLoading(false);
     }

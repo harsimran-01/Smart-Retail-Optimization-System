@@ -135,6 +135,69 @@ export interface SeasonalTrend {
   data: { label: string; value: number }[];
 }
 
+interface BackendProduct {
+  _id: string;
+  name: string;
+  sku: string;
+  category: string;
+  price: number;
+  cost: number;
+  stock: number;
+  minStock: number;
+  lastRestocked: string;
+}
+
+interface BackendSale {
+  _id: string;
+  date: string;
+  product?: {
+    _id: string;
+  };
+  productName: string;
+  quantity: number;
+  revenue: number;
+}
+
+interface BackendAlert {
+  _id: string;
+  type: SmartAlert["type"];
+  severity: SmartAlert["severity"];
+  title: string;
+  message: string;
+  product?: {
+    _id: string;
+    name: string;
+  };
+  read: boolean;
+  createdAt: string;
+}
+
+interface BackendPerformance {
+  _id: string;
+  productName: string;
+  sku: string;
+  category: string;
+  price: number;
+  cost: number;
+  stock: number;
+  totalUnitsSold: number;
+  totalRevenue: number;
+}
+
+interface BackendForecastPrediction {
+  date: string;
+  predictedQuantity: number;
+}
+
+interface BackendForecast {
+  productName: string;
+  product?: {
+    _id: string;
+  };
+  confidence: number;
+  predictions: BackendForecastPrediction[];
+}
+
 const mockProducts: Product[] = [
   { id: "1", name: "Organic Coffee Beans", sku: "COF-001", category: "Beverages", price: 14.99, cost: 8.50, stock: 45, minStock: 20, lastRestocked: "2026-02-18" },
   { id: "2", name: "Whole Wheat Bread", sku: "BRD-001", category: "Bakery", price: 4.49, cost: 2.10, stock: 8, minStock: 15, lastRestocked: "2026-02-20" },
@@ -169,9 +232,9 @@ const mockRecentSales: SaleEntry[] = [
   { id: "s10", date: "2026-02-18", productId: "3", productName: "Fresh Milk 1L", quantity: 8, revenue: 26.32 },
 ];
 
-let products = [...mockProducts];
-let sales = [...mockRecentSales];
-let alerts: SmartAlert[] = [];
+const products = [...mockProducts];
+const sales = [...mockRecentSales];
+const alerts: SmartAlert[] = [];
 
 // Simulate async API calls
 const delay = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -562,9 +625,9 @@ export const api = {
 
     if (!res.ok) throw new Error("Failed to fetch products");
     // return res.json();
-    const data = await res.json();
+    const data = (await res.json()) as BackendProduct[];
 
-    return data.map((p: any) => ({
+return data.map((p) => ({
       id: p._id,              // ⭐ FIX
       name: p.name,
       sku: p.sku,
@@ -627,10 +690,10 @@ export const api = {
 
     if (!res.ok) throw new Error("Failed to fetch sales");
 
-    const data = await res.json();
+    const data = (await res.json()) as BackendSale[];
 
-    // normalize backend format → frontend format
-    return data.map((s: any) => ({
+// normalize backend format → frontend format
+return data.map((s) => ({
       id: s._id,
       date: new Date(s.date).toISOString().split("T")[0],
       productId: s.product?._id,
@@ -711,9 +774,9 @@ export const api = {
 
   if (!res.ok) throw new Error("Failed to fetch alerts");
 
-  const data = await res.json();
+  const data = (await res.json()) as { alerts: BackendAlert[] };
 
-  return data.alerts.map((a: any) => ({
+return data.alerts.map((a) => ({
     id: a._id,
     type: a.type,
     severity: a.severity,
@@ -749,10 +812,9 @@ async getProductPerformance(): Promise<ProductPerformance[]> {
       Authorization: `Bearer ${getToken()}`,
     },
   });
+const data = (await res.json()) as BackendPerformance[];
 
-  const data = await res.json();
-
-  return data.map((p: any) => {
+return data.map((p) => {
     const profitMargin =
       p.price > 0 ? ((p.price - p.cost) / p.price) * 100 : 0;
 
@@ -792,13 +854,13 @@ async getProductPerformance(): Promise<ProductPerformance[]> {
 
   if (!res.ok) throw new Error("Failed to fetch forecast");
 
-  const data = await res.json();
+  const data = (await res.json()) as BackendForecast[];
 
   // ⭐ TRANSFORM BACKEND STRUCTURE
   const flattened: ForecastEntry[] = [];
 
-  data.forEach((f: any) => {
-    f.predictions.forEach((p: any) => {
+  data.forEach((f) => {
+  f.predictions.forEach((p) => {
       flattened.push({
         date: p.date,
         productName: f.productName,

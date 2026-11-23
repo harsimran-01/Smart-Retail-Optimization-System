@@ -27,9 +27,11 @@ export default function Login() {
       await login(email, password);
       toast.success("Welcome back!");
       navigate("/dashboard");
-    } catch (err: any) {
-      toast.error(err.message || "Invalid credentials");
-    } finally {
+    } catch (err: unknown) {
+      toast.error(
+        err instanceof Error ? err.message : "Invalid credentials"
+      );
+    } {
       setLoading(false);
     }
   };
